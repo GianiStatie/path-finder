@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node",
+"class": "BFS_Pathfinder",
+"language": "GDScript",
+"path": "res://path_finders/BFS.gd"
+} ]
+_global_script_class_icons={
+"BFS_Pathfinder": ""
+}
+
 [application]
 
 config/name="Godot-path-finder"

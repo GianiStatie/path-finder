@@ -57,7 +57,7 @@ func _init_algo():
 	for y in range(diagonal / 2):
 		var length = diagonal - (2 * y)
 		for x in range(length):
-			if x >= top_margin and x <= (length - bottom_margin):
+			if top_margin <= x and x <= (length - bottom_margin):
 				var current_id = algo.get_available_point_id()
 				algo.add_point(current_id, Vector3(x + y, y, 0))
 				if x > top_margin:
