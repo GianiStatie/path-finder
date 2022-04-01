@@ -4,9 +4,9 @@ var maze = [
 	["#", "#", "#", "#", "#", "O", "#"],
 	["#", " ", " ", " ", "#", " ", "#"],
 	["#", " ", "#", " ", "#", " ", "#"],
-	["#", " ", "#", " ", " ", " ", "#"],
+	["X", " ", "#", " ", " ", " ", "#"],
 	["#", " ", "#", "#", "#", " ", "#"],
-	["#", " ", "X", " ", "#", " ", "#"],
+	["#", " ", " ", " ", " ", " ", "#"],
 	["#", "#", "#", "#", "#", "#", "#"]
 ]
 
@@ -19,7 +19,7 @@ var tile_mapping = {
 
 var weight_mapping = {
 	15: 1,
-	16: 10,
+	16: 999,
 	17: 1
 }
 
@@ -50,7 +50,6 @@ func _ready():
 	_add_points()
 	_connect_points()
 	_get_path(start_node, end_node)
-	
 	draw_path()
 
 func get_cell_id(cell_pos: Vector2) -> int:
@@ -102,9 +101,9 @@ func _connect_points():
 
 func _get_path(start, end):
 	path = astar.get_point_path(get_cell_id(start), get_cell_id(end))
-	# optional: remove start and end blocks
-	path.remove(0)
-	path.remove(path.size() - 1)
+	## optional: remove start and end blocks
+	# path.remove(0)
+	# path.remove(path.size() - 1)
 
 func _coordinate_sum():
 	return coordinates.N|coordinates.E|coordinates.S|coordinates.W
