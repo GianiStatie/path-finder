@@ -1,6 +1,9 @@
 # Godot: Path Finder Project 
 
-![dumb_joke](docs/6akgdt.jpg)
+[<center><img src="https://i.imgflip.com/37e1tp.jpg" width="50%"/></center>](image.png)
+
+## Demo link
+https://gianistatie.github.io/path-finder/
 
 ## Assets
 * **Kenney**, Tower Defense Kit - [Link](https://kenney.nl/assets/tower-defense-kit)

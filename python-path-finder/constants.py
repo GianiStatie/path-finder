@@ -1,6 +1,6 @@
-start_char = 'S'
-end_char = 'E'
-obstacle_char = '#'
+START_CHAR = 'S'
+END_CHAR = 'E'
+OBSTACLE_CHAR = '#'
 
 directions = {
     'U': [0, -1],
