@@ -34,7 +34,7 @@ def print_path(maze, path):
 
 if __name__ == "__main__":
     maze = Maze()
-    algorithm = BFSPathFinder()
+    algorithm = DFSPathFinder()
 
     _add_points(maze, algorithm)
     _connect_points(maze, algorithm)

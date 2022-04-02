@@ -13,15 +13,12 @@ class BFSPathFinder(AbstractPathFinder):
         self.end_id = to_id
 
         moves = [""]
-        path = []
 
-        while len(moves) != 0 and len(path) == 0:
+        while len(moves) != 0:
             current_move = moves.pop(0)
             for direction in directions.keys():
                 next_move = direction if not current_move else current_move + direction
                 walk_result = self._walk_path(next_move)
                 if walk_result['is_valid']: moves.append(next_move)
-                if walk_result['is_end']:
-                    path = walk_result['path']
-                    break
-        return path
+                if walk_result['is_end']: return walk_result['path']
+        return []

@@ -36,12 +36,12 @@ class AbstractPathFinder:
                 return pair['weight_scale']
         return self.obstacle_weight
 
-    def _canceles_previous_move(self, move_sequence: str):
+    def _is_redundand_move(self, move_sequence: str):
         if len(move_sequence) > 1:
             move_direction = add_vectors(
                 directions[move_sequence[-1]], 
                 directions[move_sequence[-2]])
-            if move_direction == (0, 0):
+            if move_direction == [0, 0]:
                 return True
         return False
 
@@ -55,7 +55,7 @@ class AbstractPathFinder:
             'path': []
         }
 
-        if self._canceles_previous_move(move_sequence):
+        if self._is_redundand_move(move_sequence):
             return meta
 
         current_position = self.points[self.start_id]['position']
