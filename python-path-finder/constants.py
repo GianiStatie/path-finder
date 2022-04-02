@@ -1,5 +1,6 @@
 start_char = 'S'
 end_char = 'E'
+obstacle_char = '#'
 
 directions = {
     'U': [0, -1],

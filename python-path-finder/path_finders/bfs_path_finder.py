@@ -5,13 +5,10 @@ from constants import directions
 from .abstract_path_finder import AbstractPathFinder
 
 class BFSPathFinder(AbstractPathFinder):
-    def __init__(self, obstacle_weight: int = 999):
-        super().__init__(obstacle_weight)
+    def __init__(self):
+        super().__init__()
 
-    def get_point_path(self, from_id: int, to_id: int):
-        self.start_id = from_id
-        self.end_id = to_id
-
+    def get_node_path(self):
         moves = [""]
 
         while len(moves) != 0:

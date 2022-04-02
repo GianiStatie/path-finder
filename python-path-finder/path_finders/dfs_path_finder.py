@@ -5,8 +5,8 @@ from constants import directions
 from .abstract_path_finder import AbstractPathFinder
 
 class DFSPathFinder(AbstractPathFinder):
-    def __init__(self, obstacle_weight: int = 999):
-        super().__init__(obstacle_weight)
+    def __init__(self):
+        super().__init__()
 
     def _dfs(self, moves):
         if len(moves) == 0:
@@ -19,14 +19,10 @@ class DFSPathFinder(AbstractPathFinder):
             if walk_result['is_end']: return walk_result['path']
             if walk_result['is_valid']:
                 moves.append(next_move)
-                path = self.dfs(moves)
+                path = self._dfs(moves)
                 if len(path) > 0: return path
         return []
 
-    def get_point_path(self, from_id: int, to_id: int):
-        self.start_id = from_id
-        self.end_id = to_id
-
+    def get_node_path(self):
         moves = [""]
-
         return self._dfs(moves)
