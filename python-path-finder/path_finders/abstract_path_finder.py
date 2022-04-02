@@ -3,14 +3,14 @@ from constants import directions, weight_mapping, OBSTACLE_CHAR
 from utils import add_vectors
 
 class AbstractPathFinder:
-    """Abstract for PathFinder class containing common methods.
+    """Abstract Class for PathFinder class containing common methods.
 
     """
     def __init__(self):
         self.nodes = {}
         self.connections = {}
-        self.start_id = None
-        self.end_id = None
+        self.start_node = None
+        self.end_node = None
         self.obstacle_weight = weight_mapping[OBSTACLE_CHAR]
 
     def initialize_node_graph(self, maze: Maze):
@@ -22,8 +22,8 @@ class AbstractPathFinder:
         """
         self._add_nodes(maze)
         self._connect_nodes(maze)
-        self.start_id = maze.start_node
-        self.end_id = maze.end_node
+        self.start_node = maze.start_node
+        self.end_node = maze.end_node
 
     def add_node(self, id_: int, position: list, weight: float = 1.0):
         """Adds node to the internal graph-like structure which describes the maze.
@@ -116,7 +116,7 @@ class AbstractPathFinder:
             'is_valid': False,
             'path': []
         }
-        current_position = self.nodes[self.start_id]['position']
+        current_position = self.nodes[self.start_node]['position']
         meta['path'].append(current_position)
 
         if self._is_redundand_move(move_sequence):
@@ -132,6 +132,6 @@ class AbstractPathFinder:
             current_position = new_position
 
         meta['is_valid'] = True
-        meta['is_end'] = current_position == self.nodes[self.end_id]['position']
+        meta['is_end'] = current_position == self.nodes[self.end_node]['position']
         return meta
     

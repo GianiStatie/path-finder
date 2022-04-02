@@ -1,5 +1,5 @@
 def add_vectors(vect_a: list, vect_b: list):
-    """Does element-wise addition between two lists
+    """Does element-wise addition between two lists.
 
     Args:
         vect_a (list): First vector.

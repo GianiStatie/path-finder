@@ -6,7 +6,7 @@ from .abstract_path_finder import AbstractPathFinder
 
 class BFSPathFinder(AbstractPathFinder):
     """ Subclass of AbstractPathFinder
-    Finds the path using breadth first search apporach.
+    Finds the path using breadth first search approach.
 
     """
 
@@ -17,7 +17,7 @@ class BFSPathFinder(AbstractPathFinder):
             current_move = moves.pop(0)
             for direction in directions:
                 # we take a step in each cardinal direction and check
-                # it's validity by calling _walk_path
+                # its validity by calling _walk_path
                 next_move = direction if not current_move else current_move + direction
                 walk_result = self._walk_path(next_move)
 

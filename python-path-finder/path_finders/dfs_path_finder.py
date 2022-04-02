@@ -6,7 +6,7 @@ from .abstract_path_finder import AbstractPathFinder
 
 class DFSPathFinder(AbstractPathFinder):
     """ Subclass of AbstractPathFinder
-    Finds the path using depth first search apporach.
+    Finds the path using depth first search approach.
 
     """
     def _dfs(self, moves):
@@ -16,7 +16,7 @@ class DFSPathFinder(AbstractPathFinder):
         current_move = moves.pop()
         for direction in directions:
             # we take a step in each cardinal direction and check
-            # it's validity by calling _walk_path
+            # its validity by calling _walk_path
             next_move = current_move + direction
             walk_result = self._walk_path(next_move)
 
