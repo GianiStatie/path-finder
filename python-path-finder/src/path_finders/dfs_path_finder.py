@@ -1,4 +1,6 @@
 from src.constants import directions
+from src.utils import add_vectors
+
 from .abstract_path_finder import AbstractPathFinder
 
 class DFSPathFinder(AbstractPathFinder):
@@ -6,6 +8,15 @@ class DFSPathFinder(AbstractPathFinder):
     Finds the path using depth first search approach.
 
     """
+    def get_node_path(self):
+        """Finds a path from start_node to end_node using depth first search approach.
+
+        Returns:
+            path (list): A list containing node coordinates which form a path from start to end.
+        """
+        moves = [""]
+        return self._dfs(moves)
+
     def _dfs(self, moves):
         if len(moves) == 0:
             return []
@@ -31,11 +42,27 @@ class DFSPathFinder(AbstractPathFinder):
                     return path
         return []
 
-    def get_node_path(self):
-        """Finds a path from start_node to end_node using depth first search approach.
+    def _walk_path(self, move_sequence: str):
+        meta = {
+            'is_end': False,
+            'is_valid': False,
+            'path': []
+        }
+        current_position = self.graph.get_start_node_position()
+        meta['path'].append(current_position)
 
-        Returns:
-            path (list): A list containing node coordinates which form a path from start to end.
-        """
-        moves = [""]
-        return self._dfs(moves)
+        if self._is_redundand_move(move_sequence):
+            return meta
+
+        for direction in move_sequence:
+            new_position = add_vectors(current_position, directions[direction])
+            meta['path'].append(new_position)
+            if not self._is_valid_move(current_position, new_position):
+                return meta
+            if self._is_obstacle(new_position):
+                return meta
+            current_position = new_position
+
+        meta['is_valid'] = True
+        meta['is_end'] = current_position == self.graph.get_end_node_position()
+        return meta

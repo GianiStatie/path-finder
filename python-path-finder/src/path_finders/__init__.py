@@ -1,5 +1,6 @@
 from .bfs_path_finder import BFSPathFinder
 from .dfs_path_finder import DFSPathFinder
+from .dijkstra_path_finder import DijkstraPathFinder
 
 def get_algorithm(name: str):
     """Fetches a search algorithm object by name.
@@ -20,4 +21,6 @@ def get_algorithm(name: str):
         return BFSPathFinder()
     if name.lower() == 'dfs':
         return DFSPathFinder()
+    if name.lower() == 'dijkstra':
+        return DijkstraPathFinder()
     raise ValueError(name)

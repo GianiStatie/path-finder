@@ -43,29 +43,4 @@ class AbstractPathFinder:
 
     def _is_obstacle(self, position: list):
         return self.graph.get_position_weight(position) == self.obstacle_weight
-
-    def _walk_path(self, move_sequence: str):
-        meta = {
-            'is_end': False,
-            'is_valid': False,
-            'path': []
-        }
-        current_position = self.graph.get_start_node_position()
-        meta['path'].append(current_position)
-
-        if self._is_redundand_move(move_sequence):
-            return meta
-
-        for direction in move_sequence:
-            new_position = add_vectors(current_position, directions[direction])
-            meta['path'].append(new_position)
-            if not self._is_valid_move(current_position, new_position):
-                return meta
-            if self._is_obstacle(new_position):
-                return meta
-            current_position = new_position
-
-        meta['is_valid'] = True
-        meta['is_end'] = current_position == self.graph.get_end_node_position()
-        return meta
     

@@ -1,4 +1,5 @@
 import argparse
+import time
 
 from src.maze import Maze
 from src.graph import Graph
