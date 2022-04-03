@@ -10,6 +10,11 @@ class BFSPathFinder(AbstractPathFinder):
     """
 
     def get_node_path(self):
+        """Generates a path from the graph's start_node to the end_node.
+
+        Returns:
+            path (list): List of points which lead from start_node to end_node.
+        """
         moves = [""]
 
         while len(moves) != 0:

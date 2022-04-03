@@ -1,5 +1,4 @@
 import argparse
-import time
 
 from src.maze import Maze
 from src.graph import Graph
@@ -26,12 +25,12 @@ def print_path(maze: Maze, path: list, exclude_bounds=True):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('-a', '--algorithm', default='dfs',
-        help='name of the pathfinding algorithm (dfs, bfs)')
+        help='name of the pathfinding algorithm (dfs, bfs, dikjstra)')
     args = parser.parse_args()
 
     _maze = Maze()
     _graph = Graph.from_maze(_maze)
-    
+
     _algorithm = get_algorithm(args.algorithm)
     _algorithm.set_graph(_graph)
     _path = _algorithm.get_node_path()

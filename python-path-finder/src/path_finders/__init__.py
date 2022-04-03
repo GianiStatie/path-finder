@@ -10,6 +10,7 @@ def get_algorithm(name: str):
         Options:
             bfs - Breadth first search algorithm.
             dfs - Deapth first search algorithm.
+            dijkstra - Dijkstra's algorithm.
 
     Raises:
         ValueError: If the name of the algorithm is not supported.

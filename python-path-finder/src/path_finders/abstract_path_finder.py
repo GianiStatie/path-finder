@@ -1,4 +1,5 @@
 from src.constants import directions, weight_mapping, OBSTACLE_CHAR
+from src.graph import Graph
 from src.utils import add_vectors
 
 class AbstractPathFinder:
@@ -9,10 +10,20 @@ class AbstractPathFinder:
         self.graph = None
         self.obstacle_weight = weight_mapping[OBSTACLE_CHAR]
 
-    def set_graph(self, graph):
+    def set_graph(self, graph: Graph):
+        """Initializes internal graph structure for the algorithm.
+
+        Args:
+            graph (object): Graph object containing node information and connections.
+        """
         self.graph = graph
 
     def get_graph(self):
+        """Gets internal graph structure used by the algorithm.
+
+        Returns:
+            graph (object): Graph object containing node information and connections.
+        """
         return self.graph
 
     def get_node_path(self):

@@ -1,6 +1,6 @@
 # Godot: Path Finder Project 
 
-[<center><img src="https://i.imgflip.com/37e1tp.jpg" width="50%"/></center>](image.png)
+[<img src="https://i.imgflip.com/37e1tp.jpg" width="50%"/>](image.png)
 
 ## Demo link
 https://gianistatie.github.io/path-finder/

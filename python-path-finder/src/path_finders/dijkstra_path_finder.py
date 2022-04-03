@@ -1,23 +1,35 @@
-from audioop import add
-import graphlib
 from src.constants import directions
 from src.utils import add_vectors
 from .abstract_path_finder import AbstractPathFinder
 
 class DijkstraPathFinder(AbstractPathFinder):
+    """ Subclass of AbstractPathFinder
+    Finds the path using Dijkstra's search approach.
+
+    """
+    def __init__(self):
+        super().__init__()
+        self.default_distance = 1e7
+        self.transition_cost = []
+        self.transition_node = []
+
     def set_graph(self, graph):
         super().set_graph(graph)
-        self.default_distance = 1e7
         self.transition_cost = [self.default_distance] * len(self.graph.nodes)
         self.transition_node = [None] * len(self.graph.nodes)
         self.transition_cost[self.graph.start_node] = 0
 
     def get_node_path(self):
+        """Finds a path from start_node to end_node using depth first search approach.
+
+        Returns:
+            path (list): A list containing node coordinates which form a path from start to end.
+        """
         self._calculate_transitions()
 
         start_node = self.graph.start_node
         current_node = self.graph.end_node
-        
+
         path = [self.graph.nodes[current_node]['position']]
         while current_node != start_node:
             current_node = self.transition_node[current_node]
@@ -59,8 +71,3 @@ class DijkstraPathFinder(AbstractPathFinder):
                 min_distance = self.transition_cost[idx]
                 min_index = idx
         return min_index
-    
-    
-
-
-
