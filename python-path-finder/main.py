@@ -1,7 +1,8 @@
 import argparse
 
-from maze import Maze
-from path_finders import get_algorithm
+from src.maze import Maze
+from src.graph import Graph
+from src.path_finders import get_algorithm
 
 def print_path(maze: Maze, path: list, exclude_bounds=True):
     """This function is responsible for displaying the solved maze in the console.
@@ -28,8 +29,10 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     _maze = Maze()
+    _graph = Graph.from_maze(_maze)
+    
     _algorithm = get_algorithm(args.algorithm)
-    _algorithm.initialize_node_graph(_maze)
+    _algorithm.set_graph(_graph)
     _path = _algorithm.get_node_path()
 
     print_path(_maze, _path)

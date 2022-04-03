@@ -1,7 +1,4 @@
-import sys
-sys.path.append("..")
-
-from constants import directions
+from src.constants import directions
 from .abstract_path_finder import AbstractPathFinder
 
 class BFSPathFinder(AbstractPathFinder):

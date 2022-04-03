@@ -1,4 +1,4 @@
-from constants import START_CHAR, END_CHAR
+from .constants import START_CHAR, END_CHAR
 
 maze_template = [
     ["#","#", "#", "#", "#", "S","#"],
