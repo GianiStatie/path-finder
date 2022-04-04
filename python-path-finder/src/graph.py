@@ -43,6 +43,14 @@ class Graph:
                 return node_idx
         return -1
 
+    def get_all_node_positions(self):
+        """Gets a list containing all node position in order.
+
+        Returns:
+            positions (list): List of graph nodes positions.
+        """
+        return [node['position'] for node in self.nodes.values()]
+
     def get_position_weight(self, position: list):
         """Gets the weight of a node based on its position relative to the maze.
 

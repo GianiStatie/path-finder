@@ -1,6 +1,7 @@
 from .bfs_path_finder import BFSPathFinder
 from .dfs_path_finder import DFSPathFinder
 from .dijkstra_path_finder import DijkstraPathFinder
+from. astar_path_finder import AStarPathFinder
 
 def get_algorithm(name: str):
     """Fetches a search algorithm object by name.
@@ -11,6 +12,7 @@ def get_algorithm(name: str):
             bfs - Breadth first search algorithm.
             dfs - Deapth first search algorithm.
             dijkstra - Dijkstra's algorithm.
+            astar - A* algorithm.
 
     Raises:
         ValueError: If the name of the algorithm is not supported.
@@ -24,4 +26,6 @@ def get_algorithm(name: str):
         return DFSPathFinder()
     if name.lower() == 'dijkstra':
         return DijkstraPathFinder()
+    if name.lower() == 'astar':
+        return AStarPathFinder()
     raise ValueError(name)
