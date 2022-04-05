@@ -4,16 +4,18 @@ from src.maze import Maze
 from src.utils import generate_adjacent_nodes, add_vectors
 from src.constants import START_CHAR, END_CHAR, EMPTY_CHAR, OBSTACLE_CHAR
 
-# look over this: https://github.com/OrWestSide/python-scripts/blob/master/maze.py
-
 class MazeProcedural(Maze):
-    def __init__(self, width, height):
-        maze_template = self.generate_maze(width, height)
+    """Procedurally creates maze object which stores maze nodes, weights and symbolic notation.
+
+    """
+    def __init__(self, width: int, height: int):
+        maze_template = self._generate_maze(width, height)
         super().__init__(maze_template)
 
-    def generate_maze(self, width, height):
-        width += 1 
-        height += 1
+    # code yoinked from: https://gist.github.com/gmalmquist/2782000bd6b378831858?fbclid=IwAR0yN1JApyaOeNgtqBxMbj38mxmImzMuVV_xZmt64IZIOuiiPZ237edMjqg
+    def _generate_maze(self, width, height):
+        width += 2 if width % 2 else 1
+        height += 2 if height % 2 else 1
         rows, cols = height, width
 
         maze = {}
@@ -79,11 +81,8 @@ class MazeProcedural(Maze):
         maze[BR] = END_CHAR
 
         maze_template = []
-        txt = []
         for i in range(rows):
             maze_template.append([maze[(i,j)] for j in range(cols)])
-            txt.append("".join(maze[(i,j)] for j in range(cols)))
-        print('\n'.join(txt))
 
         return maze_template
         

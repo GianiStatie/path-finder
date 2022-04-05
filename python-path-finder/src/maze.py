@@ -67,7 +67,24 @@ class Maze:
         maze_width = len(self.maze_template[0])
         i, j = node_idx // maze_width, node_idx % maze_width
         return self.maze_template[i][j]
-    
+
+    def to_text(self, maze_template:list[list]=None):
+        """Converts maze template into a string for displaying.
+
+        Args:
+            maze_template (list[list], optional): List of nodes to be displayed.
+                If not given, self.maze_template will be used.
+
+        Returns:
+            maze_template_str (str):
+        """
+        maze_template_str = []
+        maze_template = maze_template or self.maze_template
+        for i in range(len(maze_template)):
+            maze_template_str.append(
+                "".join(maze_template[i][j] for j in range(len(maze_template[0]))))
+        return '\n'.join(maze_template_str)
+
     def print_path(self, path: list, exclude_bounds=True):
         """This function is responsible for displaying the solved maze in the console.
         Args:
@@ -82,8 +99,5 @@ class Maze:
         solved_maze = self.maze_template
         for node_x, node_y in path:
             solved_maze[node_y][node_x] = 'x'
-        
-        s = ""
-        for row in solved_maze:
-            s += ''.join(row + ['\n'])
-        print(s)
+        solved_maze_str = self.to_text(solved_maze)
+        print(solved_maze_str)

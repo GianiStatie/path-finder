@@ -1,8 +1,16 @@
 from .constants import directions
 
-def generate_adjacent_nodes(node):
-    i,j = node
-    for (y,x) in directions.values():
+def generate_adjacent_nodes(node: list):
+    """Retruns a generator with neighbours of given node.
+
+    Args:
+        node (list): Node for which to fetch the neighbours.
+
+    Yields:
+        neighbour (list): One of the neighbours of given node.
+    """
+    i, j = node
+    for (y, x) in directions.values():
         yield (i+y, j+x), (i+2*y, j+2*x)
 
 def add_vectors(vect_a: list, vect_b: list):

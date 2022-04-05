@@ -1,6 +1,5 @@
 import argparse
 
-from src.maze import Maze
 from src.maze_procedural import MazeProcedural
 from src.graph import Graph
 from src.path_finders import get_algorithm
@@ -11,8 +10,7 @@ if __name__ == "__main__":
         help='name of the pathfinding algorithm (dfs, bfs, dijkstra, astar)')
     args = parser.parse_args()
 
-    # _maze = MazeProcedural(7, 8)
-    _maze = Maze()
+    _maze = MazeProcedural(20, 20)
     _graph = Graph.from_maze(_maze)
 
     _algorithm = get_algorithm(args.algorithm)
