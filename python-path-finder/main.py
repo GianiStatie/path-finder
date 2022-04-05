@@ -1,33 +1,17 @@
 import argparse
 
 from src.maze import Maze
+from src.maze_procedural import MazeProcedural
 from src.graph import Graph
 from src.path_finders import get_algorithm
 
-def print_path(maze: Maze, path: list, exclude_bounds=True):
-    """This function is responsible for displaying the solved maze in the console.
-    Args:
-        maze (Maze): Maze object containing the ASCII representation of the maze.
-        path (list): List of node coordinates which form a path from start to end.
-        exclude_bounds (bool, optional): Whether to exclude the start and end nodes in the path. 
-            Defaults to True.
-    """
-    if exclude_bounds:
-        path = path[1:-1]
-
-    maze_template = maze.maze_template
-    for node_x, node_y in path:
-        maze_template[node_y][node_x] = 'x'
-    maze_template = ['  '.join(row) for row in maze_template]
-    maze_template = '\n'.join(maze_template)
-    print(maze_template)
-
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('-a', '--algorithm', default='dfs',
-        help='name of the pathfinding algorithm (dfs, bfs, dikjstra)')
+    parser.add_argument('-a', '--algorithm', default='astar',
+        help='name of the pathfinding algorithm (dfs, bfs, dijkstra, astar)')
     args = parser.parse_args()
 
+    # _maze = MazeProcedural(7, 8)
     _maze = Maze()
     _graph = Graph.from_maze(_maze)
 
@@ -35,4 +19,4 @@ if __name__ == "__main__":
     _algorithm.set_graph(_graph)
     _path = _algorithm.get_node_path()
 
-    print_path(_maze, _path)
+    _maze.print_path(_path)
