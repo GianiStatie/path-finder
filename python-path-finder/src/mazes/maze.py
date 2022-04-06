@@ -1,4 +1,4 @@
-from .constants import START_CHAR, END_CHAR
+from src.constants import START_CHAR, END_CHAR
 
 MAZE_TEMPLATE = [
     ["#","#", "#", "#", "#", "S","#"],
@@ -40,8 +40,8 @@ class Maze:
         Returns:
             node_idx (int): Index of the node relative to the maze.
         """
-        maze_height = len(self.maze_template)
-        return node[1] * maze_height + node[0]
+        maze_width = len(self.maze_template[0])
+        return node[1] * maze_width + node[0]
 
     def get_node_symbol(self, node: list):
         """Takes as input the coordinates of a node and returns its symbol.

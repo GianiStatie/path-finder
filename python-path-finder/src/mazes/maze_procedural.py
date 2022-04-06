@@ -1,6 +1,6 @@
 import random
 
-from src.maze import Maze
+from src.mazes.maze import Maze
 from src.utils import generate_adjacent_nodes, add_vectors
 from src.constants import START_CHAR, END_CHAR, EMPTY_CHAR, OBSTACLE_CHAR
 

@@ -1,5 +1,5 @@
 from src.constants import directions, weight_mapping, OBSTACLE_CHAR
-from src.maze import Maze
+from src.mazes.maze import Maze
 from src.utils import add_vectors
 
 class Graph:

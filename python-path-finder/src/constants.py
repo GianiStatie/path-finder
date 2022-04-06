@@ -11,9 +11,9 @@ directions = {
 }
 
 weight_mapping = {
-    " ": 1.0,  # walkable path
-    "S": 1.0,  # start node
-    "E": 1.0,  # end node
-    "H": 10.0, # hole (shallow obstacle)
-    "#": 999.0 # wall (hard obstacle)
+    ' ': 1.0,  # walkable path
+    'S': 1.0,  # start node
+    'E': 1.0,  # end node
+    'H': 10.0, # hole (shallow obstacle)
+    '#': 999.0 # wall (hard obstacle)
 }
