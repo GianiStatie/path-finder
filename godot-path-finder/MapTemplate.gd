@@ -38,7 +38,9 @@ const road_connections = {
 const empty_road_tile = 16
 const road_construction_tile = 17
 
-onready var astar = AStar2D.new()
+#onready var astar = AStar2D.new()
+onready var astar = BFS_Pathfinder.new()
+
 var used_cells: Array
 var path: PoolVector2Array
 var start_node: Vector2
@@ -77,8 +79,7 @@ func _init_map():
 	for i in range(len(maze)):
 		for j in range(len(maze[0])):
 			var maze_cell_symbol = maze[i][j]
-			var maze_cell_tile = tile_mapping[maze_cell_symbol]
-			set_cell(i, -j, maze_cell_tile)
+			set_cell(i, -j, tile_mapping[maze_cell_symbol])
 			if maze_cell_symbol == 'O': start_node = Vector2(i, -j)
 			if maze_cell_symbol == 'X': end_node = Vector2(i, -j)
 			used_cells.append(Vector2(i, -j))

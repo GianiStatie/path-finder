@@ -10,12 +10,24 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node",
+"class": "AbstractPathFinder",
+"language": "GDScript",
+"path": "res://src/path_finders/abstract_path_finder.gd"
+}, {
+"base": "Node",
 "class": "BFS_Pathfinder",
 "language": "GDScript",
 "path": "res://path_finders/BFS.gd"
+}, {
+"base": "TileMap",
+"class": "TemplateMaze",
+"language": "GDScript",
+"path": "res://src/mazes/template_maze.gd"
 } ]
 _global_script_class_icons={
-"BFS_Pathfinder": ""
+"AbstractPathFinder": "",
+"BFS_Pathfinder": "",
+"TemplateMaze": ""
 }
 
 [application]
@@ -23,6 +35,11 @@ _global_script_class_icons={
 config/name="Godot-path-finder"
 run/main_scene="res://LevelTemplate.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Constants="*res://src/constants.gd"
+Utils="*res://src/utils.gd"
 
 [importer_defaults]
 

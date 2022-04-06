@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://assets/Isometric/0.png" type="Texture" id=1]
 [ext_resource path="res://assets/Isometric/4.png" type="Texture" id=2]
@@ -18,7 +18,9 @@
 [ext_resource path="res://assets/Isometric/11.png" type="Texture" id=16]
 [ext_resource path="res://assets/Isometric/12.png" type="Texture" id=17]
 [ext_resource path="res://assets/Isometric/17.png" type="Texture" id=18]
-[ext_resource path="res://MapTemplate.gd" type="Script" id=19]
+[ext_resource path="res://src/mazes/template_maze.gd" type="Script" id=19]
+[ext_resource path="res://src/graph.gd" type="Script" id=20]
+[ext_resource path="res://agent.gd" type="Script" id=21]
 
 [sub_resource type="TileSet" id=1]
 0/name = "0"
@@ -276,7 +278,14 @@
 
 [node name="LevelTemplate" type="Node2D"]
 
-[node name="MapTemplate" type="TileMap" parent="."]
+[node name="Agent" type="Node" parent="."]
+script = ExtResource( 21 )
+
+[node name="Graph" type="Node" parent="Agent"]
+script = ExtResource( 20 )
+maze = NodePath("../../Maze")
+
+[node name="Maze" type="TileMap" parent="."]
 mode = 1
 tile_set = SubResource( 1 )
 cell_size = Vector2( 128, 64 )
@@ -291,3 +300,5 @@ script = ExtResource( 19 )
 offset = Vector2( 512, 300 )
 current = true
 zoom = Vector2( 2, 2 )
+
+[connection signal="updated" from="Maze" to="Agent" method="_on_Maze_updated"]

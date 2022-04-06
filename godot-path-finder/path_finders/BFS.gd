@@ -7,11 +7,6 @@ var start_id: int
 var end_id: int
 var obstacle_weight = 999
 
-var min_x = 0
-var min_y = 0
-var max_x = 0
-var max_y = 0
-
 const directions = {
 	'U': Vector2.UP, 
 	'D': Vector2.DOWN, 
@@ -24,10 +19,6 @@ func add_point(id: int, position: Vector2, weight_scale: float = 1.0) -> void:
 		'position': position,
 		'weight_scale': weight_scale
 	}
-	min_x = min(min_x, position.x)
-	min_y = min(min_y, position.y)
-	max_x = min(max_x, position.x)
-	max_y = min(max_y, position.y)
 
 func connect_points(id: int, to_id: int, bidirectional: bool=true) -> void:
 	_add_connection(id, to_id)
@@ -59,6 +50,8 @@ func walk_path(move_sequence) -> Dictionary:
 		'path': []
 	}
 	
+	print(Vector2.UP)
+	
 	if len(move_sequence) >= 2:
 		var last_move_sum = directions[move_sequence[-1]] + directions[move_sequence[-2]]
 		if last_move_sum == Vector2.ZERO:
@@ -87,10 +80,6 @@ func _get_position_weight(find_position: Vector2) -> int:
 		if find_position == position:
 			return weight_scale
 	return obstacle_weight
-
-func _is_outside_bounds(position: Vector2) -> bool:
-	return not ((min_x <= position.x and position.x <= max_x) and \
-	 			(min_y <= position.y and position.y <= max_y))
 
 func _is_obstacle(position: Vector2) -> bool:
 	return _get_position_weight(position) == obstacle_weight
