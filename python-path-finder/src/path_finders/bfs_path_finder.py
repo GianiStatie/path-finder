@@ -40,6 +40,7 @@ class BFSPathFinder(AbstractPathFinder):
             'is_valid': False,
             'path': []
         }
+        visited_nodes = []
         current_position = self.graph.get_start_node_position()
         meta['path'].append(current_position)
 
@@ -53,6 +54,9 @@ class BFSPathFinder(AbstractPathFinder):
                 return meta
             if self._is_obstacle(new_position):
                 return meta
+            if new_position in visited_nodes:
+                return meta
+            visited_nodes.append(new_position)
             current_position = new_position
 
         meta['is_valid'] = True
