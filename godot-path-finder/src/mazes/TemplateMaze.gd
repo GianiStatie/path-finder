@@ -3,9 +3,9 @@ class_name TemplateMaze
 
 var maze_template = [
 	["#", "#", "#", "#", "#", "S", "#"],
-	["#", " ", " ", " ", "#", " ", "#"],
+	["#", "E", " ", " ", "#", " ", "#"],
 	["#", " ", "#", " ", "#", " ", "#"],
-	["E", " ", "#", " ", " ", " ", "#"],
+	["#", " ", "#", " ", " ", " ", "#"],
 	["#", " ", "#", "#", "#", " ", "#"],
 	["#", " ", " ", " ", " ", " ", "#"],
 	["#", "#", "#", "#", "#", "#", "#"]
@@ -77,7 +77,11 @@ func get_node_symbol_by_idx(node_idx: int):
 	var j = node_idx % maze_width
 	return maze_template[i][j]
 
-func draw_path(path):
+func draw_path(path, open_interval=false):
+	if open_interval:
+		path.pop_back()
+		path.pop_front()
+	
 	for tile in path:
 		set_cell(tile.y, tile.x, 17)
 		yield(get_tree(), "idle_frame")

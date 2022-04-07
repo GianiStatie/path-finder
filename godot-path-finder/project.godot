@@ -12,26 +12,32 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "AbstractPathFinder",
 "language": "GDScript",
-"path": "res://src/path_finders/abstract_path_finder.gd"
+"path": "res://src/path_finders/AbstractPathFinder.gd"
 }, {
-"base": "Node",
-"class": "BFS_Pathfinder",
+"base": "AbstractPathFinder",
+"class": "BFSPathFinder",
 "language": "GDScript",
-"path": "res://path_finders/BFS.gd"
+"path": "res://src/path_finders/BFSPathFinder.gd"
+}, {
+"base": "AbstractPathFinder",
+"class": "DFSPathFinder",
+"language": "GDScript",
+"path": "res://src/path_finders/DFSPathFinder.gd"
 }, {
 "base": "Node",
 "class": "Graph",
 "language": "GDScript",
-"path": "res://src/graph.gd"
+"path": "res://src/Graph.gd"
 }, {
 "base": "TileMap",
 "class": "TemplateMaze",
 "language": "GDScript",
-"path": "res://src/mazes/template_maze.gd"
+"path": "res://src/mazes/TemplateMaze.gd"
 } ]
 _global_script_class_icons={
 "AbstractPathFinder": "",
-"BFS_Pathfinder": "",
+"BFSPathFinder": "",
+"DFSPathFinder": "",
 "Graph": "",
 "TemplateMaze": ""
 }
@@ -44,8 +50,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Constants="*res://src/constants.gd"
-Utils="*res://src/utils.gd"
+Constants="*res://src/Constants.gd"
+Utils="*res://src/Utils.gd"
 
 [importer_defaults]
 

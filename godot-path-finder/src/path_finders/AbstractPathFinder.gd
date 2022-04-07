@@ -1,7 +1,7 @@
 extends Node
 class_name AbstractPathFinder
 
-export(NodePath) onready var graph = get_node(graph) as Graph
+var graph
 var obstacle_weight = Constants.weight_mapping[Constants.OBSTACLE_CHAR]
 
 func _is_redundand_move(move_sequence: String):
