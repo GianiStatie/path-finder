@@ -11,9 +11,21 @@ var maze_template = [
 	["#", "#", "#", "#", "#", "#", "#"]
 ]
 
+const coordinates = {
+	'N': 1, 
+	'E': 2,
+	'S': 4,
+	'W': 8
+}
+
+const road_connections = {
+	Vector2(0,  1): coordinates.N, Vector2(-1, 0): coordinates.E,
+	Vector2(0, -1): coordinates.S, Vector2( 1, 0): coordinates.W
+}
+
 var nodes = []
-var start_node = null
-var end_node = null
+var start_node_idx = null
+var end_node_idx = null
 
 signal updated
 
@@ -28,9 +40,9 @@ func _init_map():
 			# isometric view requires x to be inverted
 			var node = Vector2(-x, y)
 			if maze_cell_symbol == Constants.START_CHAR:
-				start_node = get_node_index(node)
+				start_node_idx = get_node_index(node)
 			if maze_cell_symbol == Constants.END_CHAR:
-				end_node = get_node_index(node)
+				end_node_idx = get_node_index(node)
 			set_cell(y, -x, Constants.tile_mapping[maze_cell_symbol])
 			nodes.append(node)
 	emit_signal("updated")
@@ -49,7 +61,7 @@ func get_node_index(node: Vector2):
 		node_idx (int): Index of the node relative to the maze.
 	"""
 	var maze_width = len(maze_template[0])
-	return node[1] * maze_width + node[0] * -1
+	return node.y * maze_width + node.x * -1
 
 func get_node_symbol_by_idx(node_idx: int):
 	"""Takes as input the index of a node and returns its symbol.
@@ -64,3 +76,19 @@ func get_node_symbol_by_idx(node_idx: int):
 	var i = node_idx / maze_width
 	var j = node_idx % maze_width
 	return maze_template[i][j]
+
+func draw_path(path):
+	for tile in path:
+		set_cell(tile.y, tile.x, 17)
+		yield(get_tree(), "idle_frame")
+	
+	for tile in path:
+		var current_tile = _coordinate_sum()
+		for dir in road_connections:
+			if get_cellv(Vector2(tile.y, tile.x) + dir) != _coordinate_sum():
+				if get_cellv(Vector2(tile.y, tile.x) + dir) != 16:
+					current_tile -= road_connections[dir]
+		set_cellv(Vector2(tile.y, tile.x), current_tile)
+
+func _coordinate_sum():
+	return coordinates.N|coordinates.E|coordinates.S|coordinates.W

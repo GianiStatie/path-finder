@@ -8,8 +8,8 @@ var OBSTACLE_CHAR = '#'
 var directions = {
 	'U': Vector2(0, -1),
 	'D': Vector2(0, 1),
-	'L': Vector2(-1, 0),
-	'R': Vector2(1, 0),
+	'R': Vector2(-1, 0),
+	'L': Vector2(1, 0),
 }
 
 var weight_mapping = {
