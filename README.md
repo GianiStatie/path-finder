@@ -1,4 +1,4 @@
-# Godot: Path Finder Project 
+# Godot: Path Finder Project
 
 [<img src="https://i.imgflip.com/37e1tp.jpg" width="50%"/>](image.png)
 
