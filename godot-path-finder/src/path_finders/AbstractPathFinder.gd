@@ -1,7 +1,7 @@
 extends Node
 class_name AbstractPathFinder
 
-var graph
+var graph setget set_graph
 var obstacle_weight = Constants.weight_mapping[Constants.OBSTACLE_CHAR]
 
 func _is_redundand_move(move_sequence: String):
@@ -23,3 +23,6 @@ func _is_valid_move(current_position:Vector2, new_position: Vector2):
 
 func _is_obstacle(position: Vector2):
 	return graph.get_position_weight(position) == obstacle_weight
+
+func set_graph(value):
+	graph = value
