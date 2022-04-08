@@ -27,7 +27,7 @@ var nodes = []
 var start_node_idx = null
 var end_node_idx = null
 
-signal updated
+signal map_initialized
 
 func _ready():
 	_init_map()
@@ -45,7 +45,7 @@ func _init_map():
 				end_node_idx = get_node_index(node)
 			set_cell(y, -x, Constants.tile_mapping[maze_cell_symbol])
 			nodes.append(node)
-	emit_signal("updated")
+	emit_signal("map_initialized")
 
 func _center_map():
 	var map_rect_pos = get_used_rect().end - Vector2(1, 0)

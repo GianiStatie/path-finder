@@ -25,4 +25,4 @@ func _is_obstacle(position: Vector2):
 	return graph.get_position_weight(position) == obstacle_weight
 
 func set_graph(value):
-	pass
+	graph = value
