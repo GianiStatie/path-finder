@@ -2,7 +2,8 @@ extends Node
 
 var algorithm_paths = {
 	'dfs': load("res://src/path_finders/DFSPathFinder.gd"),
-	'bfs': load("res://src/path_finders/BFSPathFinder.gd")
+	'bfs': load("res://src/path_finders/BFSPathFinder.gd"),
+	'dijkstra': load("res://src/path_finders/DijkstraPathFinder.gd")
 }
 
 var path = []
@@ -12,7 +13,7 @@ onready var graph = get_node("Graph")
 onready var brain = get_node("Brain")
 
 export(NodePath) onready var maze = get_node(maze)
-export(String, 'dfs', 'bfs') var algorithm = 'dfs' setget set_algorithm
+export(String, 'dfs', 'bfs', 'dijkstra') var algorithm = 'dijkstra' setget set_algorithm
 
 func _ready():
 	ready = true
