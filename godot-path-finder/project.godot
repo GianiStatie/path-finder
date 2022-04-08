@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/path_finders/DFSPathFinder.gd"
 }, {
+"base": "AbstractPathFinder",
+"class": "DijkstraPathFinder",
+"language": "GDScript",
+"path": "res://src/path_finders/DijkstraPathFinder.gd"
+}, {
 "base": "Node",
 "class": "Graph",
 "language": "GDScript",
@@ -38,6 +43,7 @@ _global_script_class_icons={
 "AbstractPathFinder": "",
 "BFSPathFinder": "",
 "DFSPathFinder": "",
+"DijkstraPathFinder": "",
 "Graph": "",
 "TemplateMaze": ""
 }
