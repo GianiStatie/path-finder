@@ -1,14 +1,22 @@
 extends AbstractPathFinder
-class_name DijkstraPathFinder
+class_name AstarPathFinder
 
 var default_distance = 1e7
 var transition_cost = {}
+var transition_cost_g = {}
+var transition_cost_h = {}
 var transition_node = {}
 
 func set_graph(graph_):
 	graph = graph_
-	for node_name in graph.nodes:
-		transition_cost[node_name] = default_distance
+	var start_node_position = graph.get_start_node_position()
+	var node_positions = graph.get_all_node_positions()
+	for node_idx in range(len(graph.nodes)):
+		var node_name = graph.nodes.keys()[node_idx]
+		var node_position = node_positions[node_idx]
+		transition_cost_h[node_name] = node_position.distance_to(start_node_position)
+		transition_cost_g[node_name] = default_distance
+		transition_cost[node_name] = transition_cost_h[node_name] + transition_cost_g[node_name]
 		transition_node[node_name] = null
 	transition_cost[graph.start_node] = 0
 
@@ -45,7 +53,9 @@ func _calculate_transitions():
 			var connected_node_weight = graph.get_position_weight(node_position)
 			var trainsition_weight = transition_cost[current_node] + connected_node_weight
 			if transition_cost[connected_node] > trainsition_weight:
-				transition_cost[connected_node] = trainsition_weight
+				transition_cost_g[connected_node] = trainsition_weight
+				transition_cost[connected_node] = trainsition_weight + \
+					transition_cost_h[connected_node]
 				transition_node[connected_node] = current_node
 
 func _get_minimum_cost_node(unvisited_nodes):

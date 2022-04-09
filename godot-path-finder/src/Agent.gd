@@ -2,7 +2,7 @@ extends Node
 
 var path = []
 var ready = false
-var algorithm = 'dijkstra'
+var algorithm = 'astar'
 
 onready var graph = get_node("Graph")
 onready var brain = get_node("Brain")

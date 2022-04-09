@@ -26,3 +26,10 @@ var tile_mapping = {
 	"S": 17,
 	"E": 17,
 }
+
+var algorithm_paths = {
+	'dfs': load("res://src/path_finders/DFSPathFinder.gd"),
+	'bfs': load("res://src/path_finders/BFSPathFinder.gd"),
+	'dijkstra': load("res://src/path_finders/DijkstraPathFinder.gd"),
+	'astar': load("res://src/path_finders/AstarPathFinder.gd")
+}
