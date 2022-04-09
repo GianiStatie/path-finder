@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://assets/Isometric/0.png" type="Texture" id=1]
 [ext_resource path="res://assets/Isometric/4.png" type="Texture" id=2]
@@ -19,10 +19,11 @@
 [ext_resource path="res://assets/Isometric/12.png" type="Texture" id=17]
 [ext_resource path="res://assets/Isometric/17.png" type="Texture" id=18]
 [ext_resource path="res://src/mazes/TemplateMaze.gd" type="Script" id=19]
-[ext_resource path="res://LevelTemplate.gd" type="Script" id=20]
+[ext_resource path="res://Level.gd" type="Script" id=20]
 [ext_resource path="res://src/Agent.gd" type="Script" id=21]
 [ext_resource path="res://src/path_finders/BFSPathFinder.gd" type="Script" id=22]
 [ext_resource path="res://src/Graph.gd" type="Script" id=23]
+[ext_resource path="res://UI.gd" type="Script" id=24]
 
 [sub_resource type="TileSet" id=1]
 0/name = "0"
@@ -278,12 +279,11 @@
 17/shapes = [  ]
 17/z_index = 0
 
-[node name="LevelTemplate" type="Node2D"]
+[node name="Level" type="Node2D"]
 script = ExtResource( 20 )
 
 [node name="Agent" type="Node" parent="."]
 script = ExtResource( 21 )
-maze = NodePath("../Maze")
 
 [node name="Graph" type="Node" parent="Agent"]
 script = ExtResource( 23 )
@@ -296,7 +296,6 @@ mode = 1
 tile_set = SubResource( 1 )
 cell_size = Vector2( 128, 64 )
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-cell_tile_origin = 1
 compatibility_mode = true
 centered_textures = true
 format = 1
@@ -307,4 +306,17 @@ offset = Vector2( 512, 300 )
 current = true
 zoom = Vector2( 2, 2 )
 
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource( 24 )
+
+[node name="OptionButton" type="OptionButton" parent="UI"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -45.0
+margin_right = 45.0
+margin_bottom = 20.0
+text = "algorithm"
+
 [connection signal="map_initialized" from="Maze" to="." method="_on_Maze_map_initialized"]
+[connection signal="updated_algorithm" from="UI" to="." method="_on_UI_updated_algorithm"]
+[connection signal="item_selected" from="UI/OptionButton" to="UI" method="_on_OptionButton_item_selected"]

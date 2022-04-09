@@ -57,7 +57,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Godot-path-finder"
-run/main_scene="res://LevelTemplate.tscn"
+run/main_scene="res://Level.tscn"
 config/icon="res://icon.png"
 
 [autoload]

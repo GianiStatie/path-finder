@@ -2,13 +2,13 @@ extends TileMap
 class_name TemplateMaze
 
 var maze_template = [
-	["#", "#", "#", "#", "#", "S", "#"],
-	["#", "E", " ", " ", "#", " ", "#"],
-	["#", " ", "#", " ", "#", " ", "#"],
-	["#", " ", "#", " ", " ", " ", "#"],
-	["#", " ", "#", "#", "#", " ", "#"],
-	["#", " ", " ", " ", " ", " ", "#"],
-	["#", "#", "#", "#", "#", "#", "#"]
+	["#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "S", "#"],
+	["#", " ", " ", " ", " ", "#", "#", "#", " ", "#", "#", "#", " ", "#"],
+	["#", " ", " ", "#", " ", "#", " ", " ", " ", " ", " ", " ", " ", "#"],
+	["#", " ", " ", "#", " ", "#", "#", " ", " ", " ", "#", "#", " ", "#"],
+	["#", " ", "#", "#", " ", " ", " ", "#", " ", " ", " ", " ", " ", "#"],
+	["E", " ", " ", " ", " ", "#", " ", " ", " ", "#", "#", "#", " ", "#"],
+	["#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#"]
 ]
 
 const coordinates = {
@@ -30,10 +30,13 @@ var end_node_idx = null
 signal map_initialized
 
 func _ready():
-	_init_map()
-	_center_map()
+	reset_map()
 
-func _init_map():
+func reset_map():
+	_clear_map()
+	#_center_map()
+
+func _clear_map():
 	for y in range(len(maze_template)):
 		for x in range(len(maze_template[0])):
 			var maze_cell_symbol = maze_template[y][x]
@@ -48,8 +51,8 @@ func _init_map():
 	emit_signal("map_initialized")
 
 func _center_map():
-	var map_rect_pos = get_used_rect().end - Vector2(1, 0)
-	transform.origin = get_viewport().size / 2 - map_rect_pos * cell_size / 2
+	var tilemap_size = get_used_rect().size * Vector2(cell_size.y, cell_size.x)
+	position = get_viewport_rect().size / 2 - cell_size/2
 
 func get_node_index(node: Vector2):
 	"""Takes as input the coordinates of a node and returns its index.
