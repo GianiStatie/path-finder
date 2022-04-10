@@ -49,7 +49,7 @@ func _clear_map():
 	emit_signal("map_initialized")
 
 func _center_map():
-	var node = nodes[len(nodes) / 2]
+	var node = nodes[int(len(nodes) / 2)]
 	var local_position = map_to_world(node)
 	var glob_position = to_global(local_position)
 	transform.origin = get_viewport().size / 2 - glob_position
