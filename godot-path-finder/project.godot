@@ -65,6 +65,13 @@ config/icon="res://icon.png"
 Constants="*res://src/Constants.gd"
 Utils="*res://src/Utils.gd"
 
+[display]
+
+window/size/test_width=1024
+window/size/test_height=600
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
 [importer_defaults]
 
 texture={
