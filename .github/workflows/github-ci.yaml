@@ -1,6 +1,8 @@
 name: "godot-ci export"
-on:
+on: 
   push:
+    paths:
+      - 'godot-path-finder/**'
     branch:
       - master
 
