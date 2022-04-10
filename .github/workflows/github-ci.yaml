@@ -1,6 +1,6 @@
 name: "godot-ci export"
-on: 
-  merge:
+on:
+  push:
     branch:
       - master
 
