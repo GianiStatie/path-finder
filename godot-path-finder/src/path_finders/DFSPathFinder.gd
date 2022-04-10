@@ -15,7 +15,6 @@ func get_node_path():
 func _dfs(moves):
 	if len(moves) == 0:
 		return []
-	
 	var current_move: String = moves.pop_back()
 	for direction in Constants.directions:
 		# we take a step in each cardinal direction and check

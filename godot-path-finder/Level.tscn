@@ -324,14 +324,19 @@ zoom = Vector2( 2, 2 )
 [node name="UI" type="CanvasLayer" parent="."]
 script = ExtResource( 24 )
 
-[node name="OptionButton" type="OptionButton" parent="UI"]
+[node name="Container" type="HSplitContainer" parent="UI"]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -45.0
 margin_right = 45.0
-margin_bottom = 20.0
+margin_bottom = 40.0
+
+[node name="OptionAlgorithm" type="OptionButton" parent="UI/Container"]
+margin_right = 90.0
+margin_bottom = 40.0
 text = "algorithm"
+align = 1
 
 [connection signal="map_initialized" from="Maze" to="." method="_on_Maze_map_initialized"]
 [connection signal="updated_algorithm" from="UI" to="." method="_on_UI_updated_algorithm"]
-[connection signal="item_selected" from="UI/OptionButton" to="UI" method="_on_OptionButton_item_selected"]
+[connection signal="item_selected" from="UI/Container/OptionAlgorithm" to="UI" method="_on_OptionButton_item_selected"]

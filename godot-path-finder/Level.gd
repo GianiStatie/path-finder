@@ -6,6 +6,8 @@ onready var maze = get_node("Maze")
 var is_ready = false
 var is_maze_ready = false
 
+export var delay = 3
+
 func _ready():
 	is_ready = true
 
@@ -20,4 +22,4 @@ func _on_UI_updated_algorithm(algorithm_name):
 		yield(get_tree(),"idle_frame")
 	agent.set_algorithm(algorithm_name)
 	maze.reset_map()
-	maze.draw_path(agent.path, agent.seen_nodes, true)
+	maze.draw_path(agent.path, agent.seen_nodes, true, delay)

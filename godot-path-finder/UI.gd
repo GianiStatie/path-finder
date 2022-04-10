@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-onready var algorithm_option_button = get_node("OptionButton")
+onready var algorithm_option_button = get_node("Container/OptionAlgorithm")
 
 var algo_names = Constants.algorithm_paths.keys()
 
