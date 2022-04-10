@@ -31,7 +31,7 @@ signal map_initialized
 
 func _ready():
 	_clear_map()
-	
+	_center_map()
 
 func _clear_map():
 	nodes = []
