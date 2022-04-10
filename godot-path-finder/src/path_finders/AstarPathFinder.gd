@@ -7,6 +7,8 @@ var transition_cost_g = {}
 var transition_cost_h = {}
 var transition_node = {}
 
+var seen_nodes = []
+
 func set_graph(graph_):
 	graph = graph_
 	var start_node_position = graph.get_start_node_position()
@@ -49,6 +51,8 @@ func _calculate_transitions():
 			break
 		unvisited_nodes.erase(current_node)
 		for node_position in _get_connected_nodes(current_node):
+			if not seen_nodes.has(node_position):
+				seen_nodes.append(node_position)
 			var connected_node = graph.get_position_index(node_position)
 			var connected_node_weight = graph.get_position_weight(node_position)
 			var trainsition_weight = transition_cost[current_node] + connected_node_weight

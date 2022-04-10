@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://assets/Isometric/0.png" type="Texture" id=1]
 [ext_resource path="res://assets/Isometric/4.png" type="Texture" id=2]
@@ -24,6 +24,7 @@
 [ext_resource path="res://src/path_finders/BFSPathFinder.gd" type="Script" id=22]
 [ext_resource path="res://src/Graph.gd" type="Script" id=23]
 [ext_resource path="res://UI.gd" type="Script" id=24]
+[ext_resource path="res://assets/Isometric/18.png" type="Texture" id=25]
 
 [sub_resource type="TileSet" id=1]
 0/name = "0"
@@ -278,6 +279,20 @@
 17/shape_one_way_margin = 0.0
 17/shapes = [  ]
 17/z_index = 0
+18/name = "18"
+18/texture = ExtResource( 25 )
+18/tex_offset = Vector2( 0, 0 )
+18/modulate = Color( 0.780392, 0.537255, 1, 1 )
+18/region = Rect2( 192, 256, 128, 96 )
+18/tile_mode = 0
+18/occluder_offset = Vector2( 0, 0 )
+18/navigation_offset = Vector2( 0, 0 )
+18/shape_offset = Vector2( 0, 0 )
+18/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+18/shape_one_way = false
+18/shape_one_way_margin = 0.0
+18/shapes = [  ]
+18/z_index = 0
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 20 )

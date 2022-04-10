@@ -1,6 +1,8 @@
 extends AbstractPathFinder
 class_name DFSPathFinder
 
+var seen_nodes = []
+
 func get_node_path():
 	"""Finds a path from start_node to end_node using depth first search approach.
 
@@ -43,6 +45,7 @@ func _walk_path(move_sequence: String):
 	}
 	var visited_nodes = []
 	var current_position = graph.get_start_node_position()
+	var end_node_position = graph.get_end_node_position()
 	meta['path'].append(current_position)
 	
 	if _is_redundand_move(move_sequence):
@@ -57,9 +60,11 @@ func _walk_path(move_sequence: String):
 			return meta
 		if new_position in visited_nodes:
 			return meta
+		if not seen_nodes.has(new_position):
+			seen_nodes.append(new_position)
 		visited_nodes.append(new_position)
 		current_position = new_position
 	
 	meta['is_valid'] = true
-	meta['is_end'] = current_position == graph.get_end_node_position()
+	meta['is_end'] = current_position == end_node_position
 	return meta

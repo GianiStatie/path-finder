@@ -1,6 +1,7 @@
 extends Node
 
 var path = []
+var seen_nodes = []
 var ready = false
 
 onready var graph = get_node("Graph")
@@ -20,3 +21,4 @@ func set_algorithm(algorithm):
 	brain.set_script(Constants.algorithm_paths[algorithm])
 	brain.graph = graph
 	path = brain.get_node_path()
+	seen_nodes = brain.seen_nodes

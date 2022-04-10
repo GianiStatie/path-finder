@@ -20,4 +20,4 @@ func _on_UI_updated_algorithm(algorithm_name):
 		yield(get_tree(),"idle_frame")
 	agent.set_algorithm(algorithm_name)
 	maze.reset_map()
-	maze.draw_path(agent.path, true)
+	maze.draw_path(agent.path, agent.seen_nodes, true)

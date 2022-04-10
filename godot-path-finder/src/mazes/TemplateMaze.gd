@@ -34,7 +34,7 @@ func _ready():
 
 func reset_map():
 	_clear_map()
-	#_center_map()
+	_center_map()
 
 func _clear_map():
 	for y in range(len(maze_template)):
@@ -51,8 +51,9 @@ func _clear_map():
 	emit_signal("map_initialized")
 
 func _center_map():
-	var tilemap_size = get_used_rect().size * Vector2(cell_size.y, cell_size.x)
-	position = get_viewport_rect().size / 2 - cell_size/2
+	var rect = get_used_rect().size / 2
+	var node_pos = map_to_world(Vector2(rect.x, -rect.y))
+	transform.origin = get_viewport().size / 2 - node_pos
 
 func get_node_index(node: Vector2):
 	"""Takes as input the coordinates of a node and returns its index.
@@ -80,14 +81,25 @@ func get_node_symbol_by_idx(node_idx: int):
 	var j = node_idx % maze_width
 	return maze_template[i][j]
 
-func draw_path(path, open_interval=false):
+func draw_path(path, seen_nodes, open_interval=false, idle_frames=3):
 	if open_interval:
 		path.pop_back()
 		path.pop_front()
 	
+	for tile in seen_nodes:
+		set_cell(tile.y, tile.x, 18)
+		for _i in range(idle_frames):
+			yield(get_tree(), "idle_frame")
+	
 	for tile in path:
 		set_cell(tile.y, tile.x, 17)
-		yield(get_tree(), "idle_frame")
+		for _i in range(idle_frames):
+			yield(get_tree(), "idle_frame")
+	
+	_clear_map()
+	
+	for tile in path:
+		set_cell(tile.y, tile.x, 17)
 	
 	for tile in path:
 		var current_tile = _coordinate_sum()
