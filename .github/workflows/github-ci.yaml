@@ -5,6 +5,7 @@ env:
   GODOT_VERSION: 3.3.4
   EXPORT_NAME: godot-path-finder
 
+jobs:
   export-web:
     name: Web Export
     runs-on: ubuntu-20.04
