@@ -35,7 +35,7 @@ func _walk_path(move_sequence: String):
 		'path': []
 	}
 	var visited_nodes = []
-	var current_position = graph.get_start_node_position()
+	var current_position = start_node_position
 	meta['path'].append(current_position)
 	
 	if _is_redundand_move(move_sequence):
@@ -56,5 +56,5 @@ func _walk_path(move_sequence: String):
 		current_position = new_position
 	
 	meta['is_valid'] = true
-	meta['is_end'] = current_position == graph.get_end_node_position()
+	meta['is_end'] = current_position == end_node_position
 	return meta

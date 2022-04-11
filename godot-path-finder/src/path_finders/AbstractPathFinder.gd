@@ -4,6 +4,9 @@ class_name AbstractPathFinder
 var graph setget set_graph
 var obstacle_weight = Constants.weight_mapping[Constants.OBSTACLE_CHAR]
 
+var start_node_position
+var end_node_position
+
 func _is_redundand_move(move_sequence: String):
 	var move_direction = Vector2.ZERO
 	if len(move_sequence) > 1:
@@ -26,3 +29,5 @@ func _is_obstacle(position: Vector2):
 
 func set_graph(value):
 	graph = value
+	start_node_position = graph.get_start_node_position()
+	end_node_position = graph.get_end_node_position()

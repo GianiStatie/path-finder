@@ -21,5 +21,9 @@ func _on_UI_updated_algorithm(algorithm_name):
 	while not is_maze_ready:
 		yield(get_tree(),"idle_frame")
 	agent.set_algorithm(algorithm_name)
+	
+	var path = agent.get_path(true)
+	var seen_nodes = agent.get_seen_nodes(true)
+	
 	maze._clear_map()
-	maze.draw_path(agent.path, agent.seen_nodes, true, delay)
+	maze.draw_path(path, seen_nodes, delay)

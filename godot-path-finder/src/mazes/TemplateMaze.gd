@@ -6,7 +6,7 @@ var maze_template = [
 	["#", " ", " ", " ", " ", "#", "#", "#", "#", "#", "#", " ", "#"],
 	["#", " ", " ", "#", " ", " ", "H", " ", " ", " ", " ", " ", "#"],
 	["#", " ", " ", "#", " ", "#", "#", " ", " ", "#", "#", " ", "#"],
-	["#", " ", "#", "#", " ", " ", " ", " ", " ", " ", " ", " ", "#"],
+	["#", " ", "#", "#", " ", " ", " ", " ", " ", " ", " ", "H", "#"],
 	["E", " ", "H", " ", " ", "#", " ", " ", "#", "#", "#", " ", "#"],
 	["#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#"]
 ]
@@ -80,11 +80,7 @@ func get_node_symbol_by_idx(node_idx: int):
 	var j = node_idx % maze_width
 	return maze_template[i][j]
 
-func draw_path(path, seen_nodes, open_interval=false, idle_frames=3):
-	if open_interval:
-		path.pop_back()
-		path.pop_front()
-	
+func draw_path(path, seen_nodes, idle_frames=3):	
 	for tile in seen_nodes:
 		set_cell(tile.x, tile.y, 18)
 		for _i in range(idle_frames):
