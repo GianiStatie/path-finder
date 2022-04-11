@@ -1,15 +1,12 @@
 # Godot: Path Finder Project
 
-[<img src="https://i.imgflip.com/37e1tp.jpg" width="50%"/>](image.png)
+![](./docs/path-finder.gif)
 
 ## Demo link
 https://gianistatie.github.io/path-finder/
 
 ## Assets
 * **Kenney**, Tower Defense Kit - [Link](https://kenney.nl/assets/tower-defense-kit)
-
-## Improvements
-* `maze.nodes` and `graph.nodes` should not use `int` values for keys (update Python code)
 
 ## References
 * **Barichello**, CI/CD for GitHub pages - [GitHub](https://github.com/abarichello/godot-ci)
