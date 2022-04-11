@@ -25,6 +25,7 @@ var tile_mapping = {
 	"#": 16,
 	"S": 17,
 	"E": 17,
+	"H": 19
 }
 
 var algorithm_paths = {
